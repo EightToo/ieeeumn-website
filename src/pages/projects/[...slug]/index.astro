@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import MarkdownLayout from "/src/ui/MarkdownLayout.astro";
+import Breadcrumbs from "/src/ui/Breadcrumbs.astro";
+
+export function split(str) {
+  const idx = str.lastIndexOf("/");
+  const slug = str.substring(0, idx);
+  const res = str.substring(idx + 1);
+  return { slug, res };
+}
+export async function getStaticPaths() {
+  const resources = await getCollection("projects");
+  const fils = resources.map((f) => f.id);
+  const dirs = [...new Set(fils.map((f) => split(f).slug))];
+  const folders = dirs.map((d) => ({
+    params: { slug: d || undefined },
+    props: {
+      entries: [
+        ...fils
+          .filter((it) => split(it).slug === d)
+          .map((it) => `/projects/${it}.md`),
+        ...dirs
+          .filter((it) => split(it).slug === d)
+          .filter((it) => it) // prevent `/projects` linking to itself
+          .map((it) => `/projects/${it}`),
+      ],
+    },
+  }));
+  return folders;
+}
+
+const { slug } = Astro.params;
+const segments = ["projects", ...(slug ? slug?.split("/") : [])];
+const { entries } = Astro.props;
+const frontmatter = {
+  title: slug ? `Projects: ${slug}` : "Project Home",
+};
+---
+
+<MarkdownLayout frontmatter={frontmatter}>
+  <Breadcrumbs slot="extra" segments={segments} />
+  <ul>
+    {
+      entries.map((e) => (
+        <li>
+          <a href={e}>{split(e).res}</a>
+        </li>
+      ))
+    }
+  </ul>
+</MarkdownLayout>
+<style>
+  ul {
+    font-family: var(--font-mono);
+    color: var(--color-n8);
+  }
+  a {
+    text-decoration: none;
+  }
+</style>

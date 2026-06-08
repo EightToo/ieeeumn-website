@@ -1,0 +1,12 @@
+---
+import CommonLayout from "/src/ui/CommonLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<CommonLayout frontmatter={frontmatter}>
+  <slot name="extra" />
+  <article>
+    <slot />
+  </article>
+</CommonLayout>

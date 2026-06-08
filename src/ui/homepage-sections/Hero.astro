@@ -1,0 +1,108 @@
+---
+import { Image } from "astro:assets";
+import mascot from "/src/assets/mascot-placeholder.png";
+
+import { Content as MissionStatement } from "/content/statement.md";
+---
+
+<section id="hero" class="half-split">
+  <div class="left-half">
+    <h1>IEEE at the University of Minnesota</h1>
+    <MissionStatement />
+    <div id="buttons">
+      <a href="/membership"><button class="solid">Get involved</button></a>
+      <a href="/sponsorship"><button class="outline">Sponsor us</button></a>
+    </div>
+  </div>
+  <div class="right-half">
+    <!-- TODO consider replacing with a carousel of pictures? -->
+    <div id="hero-logo">
+      <Image src={mascot} alt="TODO" />
+    </div>
+  </div>
+  <style>
+    #hero {
+      height: 750px;
+      max-height: 80svh;
+    }
+
+    button {
+      padding: 6px 8px;
+      border-radius: var(--radius-3);
+      border-width: var(--thick-1);
+      border-style: solid;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button.solid {
+      border-color: transparent;
+      background-color: var(--color-primary);
+      color: var(--color-p0);
+    }
+    button.solid:hover {
+      background-color: var(--color-secondary);
+      color: var(--color-s0);
+    }
+
+    button.outline {
+      background-color: var(--color-p0);
+      border-color: var(--color-p4);
+      color: var(--color-p8);
+    }
+    button.outline:hover {
+      background-color: var(--color-s0);
+      border-color: var(--color-s4);
+      color: var(--color-s8);
+    }
+
+    .half-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 32px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 850px) {
+      .half-split {
+        grid-template-columns: 1fr;
+      }
+      .right-half {
+        display: none;
+      }
+    }
+
+    .left-half {
+      /* probably could use a simpler CSS selector */
+      h1,
+      p,
+      div {
+        margin: var(--block-spacing) 0;
+      }
+    }
+    .left-half {
+      order: 0;
+      h1 {
+        font-size: 32px;
+      }
+    }
+
+    .right-half {
+      order: 1;
+      img {
+        border: none;
+        margin: auto;
+      }
+    }
+
+    #hero-logo {
+      svg {
+        margin: auto;
+      }
+      div {
+        display: none;
+      }
+    }
+  </style>
+</section>

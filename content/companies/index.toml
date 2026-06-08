@@ -1,0 +1,28 @@
+# ["Example, Inc."]
+# tier = "bronze"  # or "silver" or "gold" or "platinum"
+# logo = "./example/logo.svg"
+# icon = "./example/icon.svg"
+
+["Example, Inc."]
+tier = "bronze"  # or "silver" or "gold" or "platinum"
+icon = "./banner/icon.png"
+
+["CMTA, Inc."]
+tier = "silver"
+icon = "./cmta/icon.png"
+
+["Marvell Technology, Inc."]
+tier = "gold"
+icon = "./marvell/icon.png"
+
+["Seagate Technology"]
+tier = "gold"
+icon = "./seagate/icon.png"
+
+["Samsung SmartThings"]
+tier = "gold"
+icon = "./smartthings/icon.png"
+
+["Banner Engineering Corp."]
+tier = "platinum"
+icon = "./banner/icon.png"

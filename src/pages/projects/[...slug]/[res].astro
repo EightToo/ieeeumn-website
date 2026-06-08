@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownLayout from "/src/ui/MarkdownLayout.astro";
+import Breadcrumbs from "/src/ui/Breadcrumbs.astro";
+
+export function split(str) {
+  const idx = str.lastIndexOf("/");
+  const slug = str.substring(0, idx);
+  const res = str.substring(idx + 1);
+  return { slug, res };
+}
+export function splitmd(str) {
+  const { slug, res } = split(str);
+  return { slug, res: `${res}.md` };
+}
+export async function getStaticPaths() {
+  const resources = await getCollection("projects");
+  const files = resources.map((file) => ({
+    params: splitmd(file.id),
+    props: { file },
+  }));
+  return files;
+}
+
+const { slug = "", res } = Astro.params;
+const segments = ["projects", ...slug.split("/"), res].filter((it) => it);
+const { file } = Astro.props;
+const { Content } = await render(file);
+const frontmatter = file.data;
+---
+
+<MarkdownLayout frontmatter={frontmatter}>
+  <Breadcrumbs slot="extra" segments={segments} />
+  <Content />
+</MarkdownLayout>
+<style>
+  :global(article) {
+    padding-top: 30px;
+  }
+</style>

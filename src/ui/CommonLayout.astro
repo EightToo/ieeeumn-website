@@ -1,0 +1,52 @@
+---
+import "/src/styles/global.css";
+import "/src/styles/reset.css";
+
+import Header from "/src/ui/Header.astro";
+import Footer from "/src/ui/Footer.astro";
+
+const navigation = [
+  ["About us", "/about-us"],
+  ["Sponsors", "/sponsorship"],
+  ["Opportunities", "/bulletin"],
+  ["Resources", "/resources"],
+];
+
+const {
+  frontmatter: { title, url },
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header current={url} navigation={navigation} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    background-color: white;
+  }
+  @media not print {
+    .dark body {
+      background-color: black;
+    }
+  }
+</style>

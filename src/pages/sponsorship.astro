@@ -1,0 +1,16 @@
+---
+import MarkdownLayout from "/src/ui/MarkdownLayout.astro";
+import { Content as Blurb, frontmatter } from "/content/sponsorship/blurb.md";
+import { Content as Bronze } from "/content/sponsorship/bronze.md";
+import { Content as Silver } from "/content/sponsorship/silver.md";
+import { Content as Gold } from "/content/sponsorship/gold.md";
+import { Content as Contact } from "/content/sponsorship/contact.md";
+---
+
+<MarkdownLayout frontmatter={frontmatter}>
+  <Blurb />
+  <Bronze />
+  <Silver />
+  <Gold />
+  <Contact />
+</MarkdownLayout>

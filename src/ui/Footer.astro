@@ -1,0 +1,92 @@
+---
+// because Lucide Icons does not provide brand logo icons, I grabbed these from
+// https://www.svgrepo.com/collection/jtb-logo-glyphs/
+//
+// note that I also changed the fill color to currentColor instead of their
+// default black so we can make them hover responsive
+import Mailchimp from "/src/assets/mailchimp.svg";
+import Discord from "/src/assets/discord.svg";
+import Instagram from "/src/assets/instagram.svg";
+import Linkedin from "/src/assets/linkedin.svg";
+---
+
+<footer>
+  <section id="socials">
+    <a title="Newsletter signup" href="https://z.umn.edu/NewsletterIEEE">
+      <Mailchimp />
+    </a>
+    <a title="Discord server" href="https://z.umn.edu/DiscordIEEE">
+      <Discord />
+    </a>
+    <a title="Instagram profile" href="https://z.umn.edu/InstagramIEEE">
+      <Instagram />
+    </a>
+    <a title="LinkedIn profile" href="https://z.umn.edu/LinkedInIEEE">
+      <Linkedin />
+    </a>
+  </section>
+  <section id="disclaimer">
+    <p>
+      © 2026 IEEE at the University of Minnesota. All rights reserved. <br />
+      Site developed by <a href="https://jahndan.cc/">Chandan Sankar</a> and maintained
+      by the current IEEE UMN Officers.
+    </p>
+    <div id="links">
+      <a href="https://privacy.umn.edu">Privacy Statement</a>
+      <a href="https://z.umn.edu/report-accessibility-issue">
+        Report Web Accessibility Issues
+      </a>
+    </div>
+  </section>
+</footer>
+<style>
+  * {
+    text-align: inherit;
+  }
+
+  footer {
+    font-family: var(--font-sans);
+    padding: 1rem 0;
+    border-top: var(--thick-1) solid var(--color-n5);
+  }
+
+  #socials {
+    a {
+      color: var(--color-p8);
+    }
+    a:hover {
+      color: var(--color-s8);
+    }
+  }
+
+  #socials {
+    display: flex;
+    justify-content: center;
+    column-gap: 8px;
+    margin-bottom: 16px;
+
+    svg {
+      height: 40px;
+      width: 40px;
+      padding: 4px;
+      border-radius: var(--radius-4);
+      border: var(--thick-1) solid currentColor;
+    }
+
+    svg:hover {
+      background: var(--color-n1);
+    }
+  }
+
+  #disclaimer {
+    color: var(--color-n6);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  #links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+</style>

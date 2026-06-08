@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+
+const { companies } = Astro.props;
+---
+
+<div id="sponsor-grid">
+  {
+    companies.map((it) => (
+      <>
+        <Image
+          height={32}
+          width={32}
+          densities={[1, 2]}
+          src={it.data.icon}
+          alt={it.id}
+        />
+        <p class={it.data.tier}>{it.id}</p>
+      </>
+    ))
+  }
+</div>
+<style>
+  #sponsor-grid {
+    display: grid;
+    grid-template-columns: 32px auto;
+    column-gap: 6px;
+    row-gap: 4px;
+    align-items: center;
+
+    * {
+      margin: 0;
+    }
+  }
+
+  .bronze {
+    color: oklch(from #c738 0.4 c h);
+  }
+  .silver {
+    color: oklch(from #8998 0.4 c h);
+  }
+  .gold {
+    color: oklch(from #fd08 0.4 c h);
+  }
+  .platinum {
+    color: oklch(from #bcf8 0.4 c h);
+  }
+</style>

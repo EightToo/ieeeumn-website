@@ -1,0 +1,46 @@
+---
+import CommonLayout from "/src/ui/CommonLayout.astro";
+import Hero from "/src/ui/homepage-sections/Hero.astro";
+import Events from "/src/ui/homepage-sections/Events.astro";
+import Sponsors from "/src/ui/homepage-sections/Sponsors.astro";
+
+// Outline:
+// - General about section
+//   [Get involved] --> /#upcoming-events
+//   [Sponsor us] --> /sponsors
+// - Upcoming events + calendar section
+//   ..(qr codes + links) --> (RSVP forms)
+// - Sponsors section
+//   [Sponsor us <3] --> /sponsors
+
+const frontmatter = {
+  title: "IEEE UMN - Home",
+};
+---
+
+<CommonLayout frontmatter={frontmatter}>
+  <article>
+    <Hero />
+    <Events />
+    <Sponsors />
+  </article>
+  <style>
+    article {
+      padding: 0;
+
+      section {
+        padding: 48px 32px;
+      }
+      section:first-child {
+        border-top: none;
+      }
+      section {
+        border-top: var(--thick-0) dashed var(--color-n3);
+        border-bottom: var(--thick-0) dashed var(--color-n3);
+      }
+      section:last-child {
+        border-bottom: none;
+      }
+    }
+  </style>
+</CommonLayout>

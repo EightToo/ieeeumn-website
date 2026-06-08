@@ -1,0 +1,21 @@
+---
+import MarkdownLayout from "/src/ui/MarkdownLayout.astro";
+import { Content, frontmatter } from "/content/about-us.md";
+import { Content as EventCommittee } from "/content/committees/event.md";
+import { Content as OutreachCommittee } from "/content/committees/outreach.md";
+import { Content as TechCommittee } from "/content/committees/tech.md";
+import { Content as CurrentOfficers } from "/content/officers/current.md";
+import { Content as PreviousOfficers } from "/content/officers/previous.md";
+---
+
+<MarkdownLayout frontmatter={frontmatter}>
+  <Content />
+  <EventCommittee />
+  <OutreachCommittee />
+  <TechCommittee />
+  <CurrentOfficers />
+  <details>
+    <summary>Previous Officers</summary>
+    <PreviousOfficers />
+  </details>
+</MarkdownLayout>

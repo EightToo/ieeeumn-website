@@ -1,0 +1,45 @@
+---
+import Menu from "@lucide/astro/icons/menu";
+---
+
+<button id="navButton" title="Navigation">
+  <Menu class="icon" />
+</button>
+
+<style>
+  button {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    button {
+      display: block;
+    }
+  }
+
+  button {
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: var(--radius-2);
+    background: none;
+
+    .icon {
+      stroke: var(--color-p8);
+    }
+  }
+
+  button:hover {
+    background-color: var(--color-n2);
+
+    .icon {
+      stroke: var(--color-s8);
+    }
+  }
+</style>
+
+<script is:inline>
+  const handler = () => {
+    document.getElementById("navMenu").toggleAttribute("open");
+  };
+
+  document.getElementById("navButton")?.addEventListener("click", handler);
+</script>
